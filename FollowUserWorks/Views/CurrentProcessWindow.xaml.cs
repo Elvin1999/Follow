@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FollowUserWorks.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace FollowUserWorks
+namespace FollowUserWorks.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CurrentProcessWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CurrentProcessWindow : Window
     {
-        public MainWindow()
+        public ProcessViewModel ProcessViewModel { get; set; }
+        public CurrentProcessWindow(ProcessViewModel ProcessViewModel)
         {
             InitializeComponent();
+            this.ProcessViewModel = ProcessViewModel;
+            DataContext = ProcessViewModel;
         }
     }
 }
