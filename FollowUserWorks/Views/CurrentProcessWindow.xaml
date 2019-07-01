@@ -11,31 +11,31 @@
                       Width="460" Margin="-10,0,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="No" Width="50">
+                   
+                    <GridViewColumn Header="Name" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Padding="5,0" Text="{Binding No}"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Name" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Padding="5,0" Text="{Binding Name}"></TextBlock>
+                                <TextBlock Padding="5,0" Text="{Binding MainWindowTitle}"></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="BeginningTime" Width="100">
+                    <GridViewColumn Header="ProcessName" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Padding="5,0" Text="{Binding BeginningTime}"></TextBlock>
+                                <TextBlock Padding="5,0" Text="{Binding ProcessName}"></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                  
-                
-                
+
+                    <GridViewColumn Header="Threads" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding Threads.Count}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
 
             </ListView.View>

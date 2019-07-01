@@ -2,6 +2,8 @@
 using FollowUserWorks.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace FollowUserWorks.Commands
         public void Execute(object parameter)
         {
             ProcessViewModel processViewModel = new ProcessViewModel();
+            var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0);
+            processViewModel.AllProcesses = new ObservableCollection<Process>(processes);
             CurrentProcessWindow currentProcessWindow = new CurrentProcessWindow(processViewModel);
             currentProcessWindow.ShowDialog();
         }
