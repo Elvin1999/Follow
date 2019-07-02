@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ConfigurationProcessWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CurrentProcessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,13 +81,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\ConfigurationCommand.cs" />
+    <Compile Include="Commands\ConfigurationCommands\AddForbiddenProcessCommand.cs" />
+    <Compile Include="Commands\ConfigurationCommands\SelectPathCommand.cs" />
     <Compile Include="Commands\CurrentProcessCommand.cs" />
     <Compile Include="Commands\LoggedProcessCommand.cs" />
     <Compile Include="Entities\MyProcess.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\LoggedViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProcessViewModel.cs" />
+    <Compile Include="Views\ConfigurationProcessWindow.xaml.cs">
+      <DependentUpon>ConfigurationProcessWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CurrentProcessWindow.xaml.cs">
       <DependentUpon>CurrentProcessWindow.xaml</DependentUpon>
     </Compile>

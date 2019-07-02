@@ -1,5 +1,4 @@
 ﻿using FollowUserWorks.ViewModels;
-using FollowUserWorks.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace FollowUserWorks.Commands
+namespace FollowUserWorks.Commands.ConfigurationCommands
 {
-    public class ConfigurationCommand : ICommand
+    public class AddForbiddenProcessCommand : ICommand
     {
+        public AddForbiddenProcessCommand(ConfigurationViewModel configurationViewModel)
+        {
+            ConfigurationViewModel = configurationViewModel;
+        }
         public event EventHandler CanExecuteChanged;
-
+        public ConfigurationViewModel ConfigurationViewModel { get; set; }
         public bool CanExecute(object parameter)
         {
             return true;
         }
-
         public void Execute(object parameter)
         {
-            ConfigurationViewModel configurationViewModel = new ConfigurationViewModel();
-            ConfigurationProcessWindow configurationProcessWindow = new ConfigurationProcessWindow(configurationViewModel);
-
+            throw new NotImplementedException();
         }
     }
 }

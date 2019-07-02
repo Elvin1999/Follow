@@ -1,0 +1,25 @@
+﻿<Window x:Class="FollowUserWorks.Views.ConfigurationProcessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FollowUserWorks.Views"
+        mc:Ignorable="d"
+        Title="ConfigurationProcessWindow" Height="450" Width="800">
+    <Grid Background="SpringGreen">
+        <StackPanel Margin="50,50,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Process Name" FontSize="18" Width="150" Height="40"></Label>
+                <TextBox Margin="20,0,0,0" Width="120" Height="40"></TextBox>
+                <Button Command="{Binding AddForbiddenProcessCommand}" Width="220" Height="40" Margin="20,0,0,0" Content="Add To Forbidden Processes" FontSize="16"
+                         ></Button>
+            </StackPanel>
+            <Button Content="Select Path" Command="{Binding SelectPathCommand}" FontSize="18" Margin="30,50,0,0" Width="150" Height="40"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
+
+    
+    
+    
+    
