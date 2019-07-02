@@ -11,8 +11,13 @@ namespace FollowUserWorks.Commands
 {
     public class ConfigurationCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public ConfigurationCommand(MainViewModel MainViewModel)
+        {
+            this.MainViewModel = MainViewModel;
+        }
 
+        public event EventHandler CanExecuteChanged;
+        public MainViewModel MainViewModel { get; set; }
         public bool CanExecute(object parameter)
         {
             return true;
@@ -22,7 +27,7 @@ namespace FollowUserWorks.Commands
         {
             ConfigurationViewModel configurationViewModel = new ConfigurationViewModel();
             ConfigurationProcessWindow configurationProcessWindow = new ConfigurationProcessWindow(configurationViewModel);
-
+            configurationProcessWindow.ShowDialog();
         }
     }
 }

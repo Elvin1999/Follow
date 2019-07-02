@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace FollowUserWorks.Commands.ConfigurationCommands
 {
@@ -19,12 +20,20 @@ namespace FollowUserWorks.Commands.ConfigurationCommands
         public ConfigurationViewModel ConfigurationViewModel { get; set; }
         public bool CanExecute(object parameter)
         {
+
             return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            if(fbd.ShowDialog() == DialogResult.OK)
+            {
+                string str = fbd.SelectedPath;
+                //MessageBox.Show(str);
+                App.Filename = str+"\\process.json";
+            }
         }
     }
 }

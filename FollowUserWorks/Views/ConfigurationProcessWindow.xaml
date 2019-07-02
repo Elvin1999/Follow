@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FollowUserWorks.Views"
         mc:Ignorable="d"
-        Title="ConfigurationProcessWindow" Height="450" Width="800">
+        Title="ConfigurationProcessWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="SpringGreen">
         <StackPanel Margin="50,50,0,0">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Process Name" FontSize="18" Width="150" Height="40"></Label>
-                <TextBox Margin="20,0,0,0" Width="120" Height="40"></TextBox>
+                <TextBox Text="{Binding ProcessName,Mode=TwoWay}" Margin="20,0,0,0" Width="120" Height="40"></TextBox>
                 <Button Command="{Binding AddForbiddenProcessCommand}" Width="220" Height="40" Margin="20,0,0,0" Content="Add To Forbidden Processes" FontSize="16"
                          ></Button>
             </StackPanel>

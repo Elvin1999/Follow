@@ -13,5 +13,10 @@ namespace FollowUserWorks
     /// </summary>
     public partial class App : Application
     {
+        public static string Filename;
+        public App()
+        {
+            Filename = @"C:\Users\Documents\source\repos\FollowUserWorkWpfAsync\FollowUserWorks\bin\Debug\process.json";
+        }
     }
 }

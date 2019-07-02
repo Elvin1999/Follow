@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace FollowUserWorks.Views
 {
     /// <summary>
@@ -21,14 +20,13 @@ namespace FollowUserWorks.Views
     public partial class ConfigurationProcessWindow : Window
     {
         public ConfigurationViewModel ConfigurationViewModel { get; set; }
-        public ConfigurationProcessWindow()
-        {
-            InitializeComponent();
-        }
-
         public ConfigurationProcessWindow(ConfigurationViewModel configurationViewModel)
         {
+            InitializeComponent();
             ConfigurationViewModel = configurationViewModel;
+            DataContext = ConfigurationViewModel;
         }
+
+     
     }
 }

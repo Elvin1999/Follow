@@ -11,5 +11,6 @@ namespace FollowUserWorks.ViewModels
     {
         public CurrentProcessCommand CurrentProcessCommand => new CurrentProcessCommand(this);
         public LoggedProcessCommand LoggedProcessCommand=>new LoggedProcessCommand(this);
+        public ConfigurationCommand ConfigurationCommand => new ConfigurationCommand(this);
     }
 }

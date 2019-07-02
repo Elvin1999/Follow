@@ -14,7 +14,7 @@ namespace FollowUserWorks.AdditionalClasses
         public List<MyProcess> AllProcesses { get; set; }
         public void SeriailizeProcessesToJson()
         {
-            using (StreamWriter sw = new StreamWriter("process.json"))
+            using (StreamWriter sw = new StreamWriter(App.Filename))
             {
                 var item = JsonConvert.SerializeObject(AllProcesses);
                 sw.WriteLine(item);
@@ -24,7 +24,7 @@ namespace FollowUserWorks.AdditionalClasses
         {
             try
             {
-                var context = File.ReadAllText("process.json");
+                var context = File.ReadAllText(App.Filename);
                 AllProcesses = JsonConvert.DeserializeObject<List<MyProcess>>(context);
             }
             catch (Exception)
