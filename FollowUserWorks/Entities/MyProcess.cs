@@ -13,5 +13,6 @@ namespace FollowUserWorks.Entities
         public int ThreadCount { get; set; }
         public DateTime StartTime { get; set; }
         public string ProcessName { get; set; }
+        public DateTime CloseDateTime { get; set; } = DateTime.Now;
     }
 }

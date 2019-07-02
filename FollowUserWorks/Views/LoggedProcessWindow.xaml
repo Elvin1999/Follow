@@ -1,0 +1,55 @@
+﻿<Window x:Class="FollowUserWorks.Views.LoggedProcessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FollowUserWorks.Views"
+        mc:Ignorable="d"
+        Title="LoggedProcessWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView ItemsSource="{Binding AllProcesses}"
+                      Width="750" Margin="-10,0,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="MainWindowTitle" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding MainWindowTitle}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="ProcessName" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding ProcessName}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Threads" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding ThreadCount}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="StartTime" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding StartTime}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="CloseDateTime" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding="5,0" Text="{Binding CloseDateTime}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
