@@ -1,4 +1,5 @@
-﻿using FollowUserWorks.Entities;
+﻿using FollowUserWorks.AdditionalClasses;
+using FollowUserWorks.Entities;
 using FollowUserWorks.ViewModels;
 using FollowUserWorks.Views;
 using System;
@@ -51,6 +52,9 @@ namespace FollowUserWorks.Commands
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             processViewModel.AllProcesses = new ObservableCollection<MyProcess>();
             SetProcess();
+            Config config = new Config();
+            config.AllProcesses = new List<MyProcess>(processViewModel.AllProcesses);
+            config.SeriailizeWordsToJson();
             CurrentProcessWindow currentProcessWindow = new CurrentProcessWindow(processViewModel);
             dispatcherTimer.Start();
             currentProcessWindow.ShowDialog();

@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace FollowUserWorks.AdditionalClasses
 {
    public class Config
@@ -15,7 +14,7 @@ namespace FollowUserWorks.AdditionalClasses
         public List<MyProcess> AllProcesses { get; set; }
         public void SeriailizeWordsToJson()
         {
-            using (StreamWriter sw = new StreamWriter("words.json"))
+            using (StreamWriter sw = new StreamWriter("process.json"))
             {
                 var item = JsonConvert.SerializeObject(AllProcesses);
                 sw.WriteLine(item);
@@ -25,7 +24,7 @@ namespace FollowUserWorks.AdditionalClasses
         {
             try
             {
-                var context = File.ReadAllText("words.json");
+                var context = File.ReadAllText("process.json");
                 AllProcesses = JsonConvert.DeserializeObject<List<MyProcess>>(context);
             }
             catch (Exception)
@@ -35,3 +34,5 @@ namespace FollowUserWorks.AdditionalClasses
         }
     }
 }
+
+
