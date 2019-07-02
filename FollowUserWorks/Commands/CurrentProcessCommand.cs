@@ -1,4 +1,5 @@
-﻿using FollowUserWorks.ViewModels;
+﻿using FollowUserWorks.Entities;
+using FollowUserWorks.ViewModels;
 using FollowUserWorks.Views;
 using System;
 using System.Collections.Generic;
@@ -25,24 +26,38 @@ namespace FollowUserWorks.Commands
         {
             return true;
         }
+        public void SetProcess()
+        {
+            processViewModel.AllProcesses.Clear();
+            var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0).ToList();
+            foreach (var item in processes)
+            {
 
+                MyProcess myProcess = new MyProcess()
+                {
+                    StartTime = item.StartTime,
+                    MainWindowTitle = item.MainWindowTitle,
+                    ProcessName = item.ProcessName,
+                    ThreadCount = item.Threads.Count
+                };
+                processViewModel.AllProcesses.Add(myProcess);
+            }
+        }
         ProcessViewModel processViewModel = new ProcessViewModel();
         public void Execute(object parameter)
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = new TimeSpan(10);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
-            var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0);
-            processViewModel.AllProcesses = new ObservableCollection<Process>(processes);
+            processViewModel.AllProcesses = new ObservableCollection<MyProcess>();
+            SetProcess();
             CurrentProcessWindow currentProcessWindow = new CurrentProcessWindow(processViewModel);
             dispatcherTimer.Start();
             currentProcessWindow.ShowDialog();
         }
-
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0);
-            processViewModel.AllProcesses = new ObservableCollection<Process>(processes);
+            SetProcess();
         }
     }
 }

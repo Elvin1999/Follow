@@ -1,8 +1,8 @@
-﻿using System;
+﻿using FollowUserWorks.Entities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +11,8 @@ namespace FollowUserWorks.ViewModels
 {
    public class ProcessViewModel:BaseViewModel
     {
-        private ObservableCollection<Process> allProcess;
-        public ObservableCollection<Process> AllProcesses
+        private ObservableCollection<MyProcess> allProcess;
+        public ObservableCollection<MyProcess> AllProcesses
         {
             get
             {
