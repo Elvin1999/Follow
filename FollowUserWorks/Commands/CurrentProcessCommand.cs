@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace FollowUserWorks.Commands
 {
@@ -25,13 +26,23 @@ namespace FollowUserWorks.Commands
             return true;
         }
 
+        ProcessViewModel processViewModel = new ProcessViewModel();
         public void Execute(object parameter)
         {
-            ProcessViewModel processViewModel = new ProcessViewModel();
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Interval = new TimeSpan(10);
+            dispatcherTimer.Tick += DispatcherTimer_Tick;
             var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0);
             processViewModel.AllProcesses = new ObservableCollection<Process>(processes);
             CurrentProcessWindow currentProcessWindow = new CurrentProcessWindow(processViewModel);
+            dispatcherTimer.Start();
             currentProcessWindow.ShowDialog();
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            var processes = Process.GetProcesses().Where(i => i.MainWindowTitle.Length > 0);
+            processViewModel.AllProcesses = new ObservableCollection<Process>(processes);
         }
     }
 }
