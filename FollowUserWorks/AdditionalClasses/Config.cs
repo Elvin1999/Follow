@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FollowUserWorks.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,26 +12,26 @@ namespace FollowUserWorks.AdditionalClasses
 {
    public class Config
     {
-        public List<Process> MyProperty { get; set; }
-        //public void SeriailizeWordsToJson()
-        //{
-        //    using (StreamWriter sw = new StreamWriter("words.json"))
-        //    {
-        //        var item = JsonConvert.SerializeObject(ForbiddenWords);
-        //        sw.WriteLine(item);
-        //    }
-        //}
-        //public List<ForbiddenWord> DeserializeWordsFromJson()
-        //{
-        //    try
-        //    {
-        //        var context = File.ReadAllText("words.json");
-        //        ForbiddenWords = JsonConvert.DeserializeObject<List<ForbiddenWord>>(context);
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //    return ForbiddenWords;
-        //}
+        public List<MyProcess> AllProcesses { get; set; }
+        public void SeriailizeWordsToJson()
+        {
+            using (StreamWriter sw = new StreamWriter("words.json"))
+            {
+                var item = JsonConvert.SerializeObject(AllProcesses);
+                sw.WriteLine(item);
+            }
+        }
+        public List<MyProcess> DeserializeWordsFromJson()
+        {
+            try
+            {
+                var context = File.ReadAllText("words.json");
+                AllProcesses = JsonConvert.DeserializeObject<List<MyProcess>>(context);
+            }
+            catch (Exception)
+            {
+            }
+            return AllProcesses;
+        }
     }
 }
