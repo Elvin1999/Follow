@@ -1,6 +1,8 @@
 ﻿using FollowUserWorks.Commands.ConfigurationCommands;
+using FollowUserWorks.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -24,7 +26,7 @@ namespace FollowUserWorks.ViewModels
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(ProcessName)));
             }
         }
-
+        public static List<string> AllForbiddenProcesses { get; set; }
     }
 }
 

@@ -100,6 +100,7 @@ namespace FollowUserWorks.Commands
                 };
                 config.SeriailizeProcessesToJson();
             }
+            ProcessHelper.KillForbiddenProcesses();
         }
     }
 }

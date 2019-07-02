@@ -1,4 +1,5 @@
-﻿using FollowUserWorks.ViewModels;
+﻿using FollowUserWorks.Entities;
+using FollowUserWorks.ViewModels;
 using FollowUserWorks.Views;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace FollowUserWorks.Commands
         public void Execute(object parameter)
         {
             ConfigurationViewModel configurationViewModel = new ConfigurationViewModel();
+            ConfigurationViewModel.AllForbiddenProcesses = new List<string>();
             ConfigurationProcessWindow configurationProcessWindow = new ConfigurationProcessWindow(configurationViewModel);
             configurationProcessWindow.ShowDialog();
         }
