@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="LoggedProcessWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView ItemsSource="{Binding AllProcesses}"
+        <ListView ItemsSource="{Binding AllLoggedProcesses}"
                       Width="750" Margin="-10,0,0,0">
             <ListView.View>
                 <GridView>

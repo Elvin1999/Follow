@@ -56,7 +56,6 @@ namespace FollowUserWorks.Commands
         public void Execute(object parameter)
         {
             ProcessHelper = new ProcessHelper();
-
             dispatcherTimer.Interval = new TimeSpan(10);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             processViewModel.AllProcesses = new ObservableCollection<MyProcess>();
@@ -74,7 +73,7 @@ namespace FollowUserWorks.Commands
             SetProcess();
             var original_list_count = processViewModel.AllProcesses.Count;
             var temporary_list_count = ProcessHelper.TemproraryProcessList.Count;
-            if (original_list_count != temporary_list_count)
+            if (original_list_count >= temporary_list_count)
             {
                 //var original_List = new List<MyProcess>(processViewModel.AllProcesses);
                 //var isSameData = ProcessHelper.IsSameData(ProcessHelper.TemproraryProcessList, original_List);
@@ -100,10 +99,6 @@ namespace FollowUserWorks.Commands
                     AllProcesses = ProcessHelper.TemproraryProcessList
                 };
                 config.SeriailizeProcessesToJson();
-            }
-            else
-            {
-
             }
         }
     }

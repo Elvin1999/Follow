@@ -1,4 +1,5 @@
-﻿using FollowUserWorks.ViewModels;
+﻿using FollowUserWorks.AdditionalClasses;
+using FollowUserWorks.ViewModels;
 using FollowUserWorks.Views;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,9 @@ namespace FollowUserWorks.Commands
         public void Execute(object parameter)
         {
             LoggedViewModel loggedViewModel = new LoggedViewModel();
-            loggedViewModel.AllLoggedProcesses = new ObservableCollection<Entities.MyProcess>();
-            LoggedProcessWindow loggedProcessWindow = new LoggedProcessWindow(loggedViewModel);
+            Config config = new Config();
+            loggedViewModel.AllLoggedProcesses = new ObservableCollection<Entities.MyProcess>(config.DeserializeProcessesFromJson());
+            LoggedProcessWindow loggedProcessWindow = new LoggedProcessWindow(loggedViewModel);            
             loggedProcessWindow.ShowDialog();
         }
     }
