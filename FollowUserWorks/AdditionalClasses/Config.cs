@@ -12,7 +12,7 @@ namespace FollowUserWorks.AdditionalClasses
    public class Config
     {
         public List<MyProcess> AllProcesses { get; set; }
-        public void SeriailizeWordsToJson()
+        public void SeriailizeProcessesToJson()
         {
             using (StreamWriter sw = new StreamWriter("process.json"))
             {
@@ -20,7 +20,7 @@ namespace FollowUserWorks.AdditionalClasses
                 sw.WriteLine(item);
             }
         }
-        public List<MyProcess> DeserializeWordsFromJson()
+        public List<MyProcess> DeserializeProcessesFromJson()
         {
             try
             {
