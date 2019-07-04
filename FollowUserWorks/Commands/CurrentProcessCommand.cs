@@ -71,36 +71,41 @@ namespace FollowUserWorks.Commands
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             SetProcess();
-            var original_list_count = processViewModel.AllProcesses.Count;
-            var temporary_list_count = ProcessHelper.TemproraryProcessList.Count;
-            if (original_list_count >= temporary_list_count)
+            int original_list_count = -1;
+            int temporary_list_count = -1;
+            if (processViewModel.AllProcesses != null && ProcessHelper.TemproraryProcessList != null)
             {
-                //var original_List = new List<MyProcess>(processViewModel.AllProcesses);
-                //var isSameData = ProcessHelper.IsSameData(ProcessHelper.TemproraryProcessList, original_List);
+                 original_list_count = processViewModel.AllProcesses.Count;
+                 temporary_list_count = ProcessHelper.TemproraryProcessList.Count;
+                if (original_list_count >= temporary_list_count)
+                {
+                    //var original_List = new List<MyProcess>(processViewModel.AllProcesses);
+                    //var isSameData = ProcessHelper.IsSameData(ProcessHelper.TemproraryProcessList, original_List);
 
-                var originalList = processViewModel.AllProcesses.OrderByDescending(x => x.StartTime).ToList();
-                var temporaryList = ProcessHelper.TemproraryProcessList.OrderByDescending(x => x.StartTime).ToList();
-                var time1 = originalList[0].StartTime;
-                var time2 = temporaryList[0].StartTime;
-                MyProcess data;
-                if (time1 > time2)
-                {
-                    data = originalList[0];
-                    //MessageBox.Show(data.StartTime.ToLongTimeString());
+                    var originalList = processViewModel.AllProcesses.OrderByDescending(x => x.StartTime).ToList();
+                    var temporaryList = ProcessHelper.TemproraryProcessList.OrderByDescending(x => x.StartTime).ToList();
+                    var time1 = originalList[0].StartTime;
+                    var time2 = temporaryList[0].StartTime;
+                    MyProcess data;
+                    if (time1 > time2)
+                    {
+                        data = originalList[0];
+                        //MessageBox.Show(data.StartTime.ToLongTimeString());
+                    }
+                    else
+                    {
+                        data = temporaryList[0];
+                        //MessageBox.Show(data.StartTime.ToLongTimeString());
+                    }
+                    ProcessHelper.TemproraryProcessList = new List<MyProcess>(processViewModel.AllProcesses);
+                    Config config = new Config()
+                    {
+                        AllProcesses = ProcessHelper.TemproraryProcessList
+                    };
+                    config.SeriailizeProcessesToJson();
                 }
-                else
-                {
-                    data = temporaryList[0];
-                    //MessageBox.Show(data.StartTime.ToLongTimeString());
-                }
-                ProcessHelper.TemproraryProcessList = new List<MyProcess>(processViewModel.AllProcesses);
-                Config config = new Config()
-                {
-                    AllProcesses = ProcessHelper.TemproraryProcessList
-                };
-                config.SeriailizeProcessesToJson();
+                ProcessHelper.KillForbiddenProcesses();
             }
-            ProcessHelper.KillForbiddenProcesses();
         }
     }
 }
