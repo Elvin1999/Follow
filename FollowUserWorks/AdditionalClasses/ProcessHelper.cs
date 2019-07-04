@@ -51,6 +51,27 @@ namespace FollowUserWorks.AdditionalClasses
                 }
             }
         }
+        public MyProcess GetCloseProcess(List<MyProcess> temporaryList, List<MyProcess> originalList)
+        {
+            MyProcess data = new MyProcess();
+            var originalsortedlist = originalList.OrderByDescending(x => x.StartTime).ToList();
+            var templatesortedlist = temporaryList.OrderByDescending(x => x.StartTime).ToList();
+            bool IsChecked = false;
+            for (int i = 0; i < originalsortedlist.Count; i++)
+            {
+                if (originalsortedlist[i].MainWindowTitle != templatesortedlist[i].MainWindowTitle)
+                {
+                    data = templatesortedlist[i];
+                    IsChecked = true;
+                    break;
+                }
+            }
+            if (IsChecked==false)
+            {
+                data = templatesortedlist[templatesortedlist.Count - 1];
+            }
+            return data;
+        }
         //public bool IsSameData(List<MyProcess> temporaryList,List<MyProcess> originalList)
         //{
         //    check_counter = 0;

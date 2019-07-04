@@ -97,7 +97,22 @@ namespace FollowUserWorks.Commands
                         data = temporaryList[0];
                         //MessageBox.Show(data.StartTime.ToLongTimeString());
                     }
+                    //maybe i will change this code block
                     ProcessHelper.TemproraryProcessList = new List<MyProcess>(processViewModel.AllProcesses);
+                    Config config = new Config()
+                    {
+                        AllProcesses = ProcessHelper.TemproraryProcessList
+                    };
+                    config.SeriailizeProcessesToJson();
+                }
+                else
+                {
+                    var mydata=ProcessHelper.GetCloseProcess(ProcessHelper.TemproraryProcessList,new  List<MyProcess>(processViewModel.AllProcesses));
+                    var newmydata = ProcessHelper.TemproraryProcessList.SingleOrDefault(x => x.MainWindowTitle == mydata.MainWindowTitle);
+                    if (newmydata != null)
+                    {
+                        mydata.CloseDateTime = DateTime.Now;
+                    }
                     Config config = new Config()
                     {
                         AllProcesses = ProcessHelper.TemproraryProcessList
